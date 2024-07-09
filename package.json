@@ -1,0 +1,22 @@
+{
+  "name": "sol-get-accounts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pythnetwork/client": "^2.21.1",
+    "@solana/spl-token": "^0.4.7",
+    "@solana/web3.js": "^1.95.0",
+    "@types/pg": "^8.11.6",
+    "axios": "^1.7.2",
+    "decimal.js": "^10.4.3",
+    "dotenv": "^16.4.5",
+    "pg": "^8.12.0"
+  }
+}
