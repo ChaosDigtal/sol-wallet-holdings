@@ -32,7 +32,7 @@ client.connect((err) => {
 });
 
 const rpcEndpoint =
-  "https://twilight-dawn-fire.solana-mainnet.quiknode.pro/1fee75c577db3bf813ffb25df1c403d9a6cc5df4";
+  "https://mainnet.helius-rpc.com/?api-key=35eb685f-3541-4c70-a396-7aa18696c965";
 const solanaConnection = new Connection(rpcEndpoint);
 
 const walletToQuery = "LDZ7Mq863rRSsigJBKZHihAa7vjDKHZFQLEAZCjawMQ"; // Your Wallet Address Here...
