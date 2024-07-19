@@ -37,6 +37,24 @@ const solanaConnection = new Connection(rpcEndpoint);
 
 const walletToQuery = "LDZ7Mq863rRSsigJBKZHihAa7vjDKHZFQLEAZCjawMQ"; // Your Wallet Address Here...
 
+const safeNumber = (value: Decimal) => {
+  if (value.isNaN() || !value.isFinite()) {
+    return new Decimal(0); // or new Decimal(null), depending on your database schema
+  }
+  const maxPrecision = 50;
+  const maxScale = 18;
+  const maxValue = new Decimal('9.999999999999999999999999999999999999999999999999E+31'); // Adjust based on precision and scale
+  const minValue = maxValue.negated();
+
+  if (value.greaterThan(maxValue)) {
+    return maxValue;
+  }
+  if (value.lessThan(minValue)) {
+    return minValue;
+  }
+  return value;
+};
+
 async function storeDB(token_data: TokenData) {
   const query = `
     INSERT INTO wallet_holdings (
@@ -53,8 +71,8 @@ async function storeDB(token_data: TokenData) {
     token_data.id,
     token_data.name,
     token_data.symbol,
-    token_data.quantity,
-    token_data.usd_amount,
+    safeNumber(token_data.quantity ?? new Decimal(0)).toString(),
+    safeNumber(token_data.usd_amount ?? new Decimal(0)).toString(),
     token_data.wallet,
     (new Date()).toISOString()
   ];
