@@ -139,19 +139,19 @@ async function getTokenAccounts(wallet: string, solanaConnection: Connection) {
       try {
         cnta += 1;
         token_data = {
-          id: parsedAccountInfo["parsed"]["info"]["mint"],
-          name: data['result']["content"]["metadata"]["name"],
-          symbol: data['result']["content"]["metadata"]["symbol"],
-          quantity: new Decimal(parsedAccountInfo["parsed"]["info"]["tokenAmount"]["uiAmount"]),
-          usd_amount: new Decimal(parsedAccountInfo["parsed"]["info"]["tokenAmount"]["uiAmount"]).times(new Decimal(data['result']['token_info']['price_info']['price_per_token'])),
+          id: parsedAccountInfo?.parsed?.info?.mint,
+          name: data?.result?.content?.metadata?.name,
+          symbol: data?.result?.content?.metadata?.symbol,
+          quantity: new Decimal(parsedAccountInfo?.parsed?.info?.tokenAmount?.uiAmount),
+          usd_amount: new Decimal(parsedAccountInfo?.parsed?.info?.tokenAmount?.uiAmount).times(new Decimal(data?.result?.token_info?.price_info?.price_per_token)),
           wallet: walletToQuery
         } as TokenData;
       } catch {
         token_data = {
-          id: parsedAccountInfo["parsed"]["info"]["mint"],
-          name: data['result']["content"]["metadata"]["name"],
-          symbol: data['result']["content"]["metadata"]["symbol"],
-          quantity: new Decimal(parsedAccountInfo["parsed"]["info"]["tokenAmount"]["uiAmount"]),
+          id: parsedAccountInfo?.parsed?.info?.mint,
+          name: data?.result?.content?.metadata?.name,
+          symbol: data?.result?.content?.metadata?.symbol,
+          quantity: new Decimal(parsedAccountInfo?.parsed?.info?.tokenAmount?.uiAmount),
           usd_amount: null,
           wallet: walletToQuery
         } as TokenData;
